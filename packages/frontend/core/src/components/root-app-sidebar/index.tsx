@@ -1,7 +1,6 @@
 // Import is already correct, no changes needed
 import {
   AddPageButton,
-  AppDownloadButton,
   AppSidebar,
   CategoryDivider,
   MenuItem,
@@ -10,7 +9,6 @@ import {
   SidebarContainer,
   SidebarScrollableContainer,
 } from '@affine/core/modules/app-sidebar/views';
-import { ExternalMenuLinkItem } from '@affine/core/modules/app-sidebar/views/menu-item/external-menu-link-item';
 import { WorkspaceDialogService } from '@affine/core/modules/dialogs';
 import {
   ExplorerCollections,
@@ -24,12 +22,7 @@ import type { Workspace } from '@affine/core/modules/workspace';
 import { useI18n } from '@affine/i18n';
 import { track } from '@affine/track';
 import type { Store } from '@blocksuite/affine/store';
-import {
-  AllDocsIcon,
-  ImportIcon,
-  JournalIcon,
-  SettingsIcon,
-} from '@blocksuite/icons/rc';
+import { AllDocsIcon, ImportIcon, SettingsIcon } from '@blocksuite/icons/rc';
 import { useLiveData, useService, useServices } from '@toeverything/infra';
 import type { ReactElement } from 'react';
 import { memo, useCallback } from 'react';
@@ -45,7 +38,6 @@ import {
 import { AppSidebarJournalButton } from './journal-button';
 import { TemplateDocEntrance } from './template-doc-entrance';
 import { TrashButton } from './trash-button';
-import { UpdaterButton } from './updater-button';
 import { UserInfo } from './user-info';
 
 export type RootAppSidebarProps = {
@@ -186,16 +178,8 @@ export const RootAppSidebar = memo((): ReactElement => {
             <span data-testid="import-modal-trigger">{t['Import']()}</span>
           </MenuItem>
           <TemplateDocEntrance />
-          <ExternalMenuLinkItem
-            href="https://affine.pro/blog?tag=Release+Note"
-            icon={<JournalIcon />}
-            label={t['com.affine.app-sidebar.learn-more']()}
-          />
         </div>
       </SidebarScrollableContainer>
-      <SidebarContainer>
-        {BUILD_CONFIG.isElectron ? <UpdaterButton /> : <AppDownloadButton />}
-      </SidebarContainer>
     </AppSidebar>
   );
 });

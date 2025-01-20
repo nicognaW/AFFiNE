@@ -13,8 +13,6 @@ import type {
   WORKSPACE_DIALOG_SCHEMA,
 } from '@affine/core/modules/dialogs/constant';
 import { GlobalContextService } from '@affine/core/modules/global-context';
-import { Trans } from '@affine/i18n';
-import { ContactWithUsIcon } from '@blocksuite/icons/rc';
 import { FrameworkScope, useLiveData, useService } from '@toeverything/infra';
 import { debounce } from 'lodash-es';
 import {
@@ -125,14 +123,6 @@ const SettingModalInner = ({
   const [openIssueFeedbackModal, setOpenIssueFeedbackModal] = useState(false);
   const [openStarAFFiNEModal, setOpenStarAFFiNEModal] = useState(false);
 
-  const handleOpenIssueFeedbackModal = useCallback(() => {
-    setOpenIssueFeedbackModal(true);
-  }, [setOpenIssueFeedbackModal]);
-
-  const handleOpenStarAFFiNEModal = useCallback(() => {
-    setOpenStarAFFiNEModal(true);
-  }, [setOpenStarAFFiNEModal]);
-
   return (
     <FrameworkScope scope={currentServer.scope}>
       <SettingSidebar
@@ -166,26 +156,6 @@ const SettingModalInner = ({
                   />
                 ) : null}
               </Suspense>
-            </div>
-            <div className={style.footer}>
-              <ContactWithUsIcon fontSize={16} />
-              <Trans
-                i18nKey={'com.affine.settings.suggestion-2'}
-                components={{
-                  1: (
-                    <span
-                      className={style.link}
-                      onClick={handleOpenStarAFFiNEModal}
-                    />
-                  ),
-                  2: (
-                    <span
-                      className={style.link}
-                      onClick={handleOpenIssueFeedbackModal}
-                    />
-                  ),
-                }}
-              />
             </div>
             <StarAFFiNEModal
               open={openStarAFFiNEModal}
